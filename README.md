@@ -29,7 +29,7 @@ Tider's Shore is a Space Station 14 server that prides itself on uhh... *somethi
 We are a fork of [Goob Station](https://github.com/Goob-Station/Goob-Station), which itself is a fork of the [main Space Station 14 repository](https://github.com/space-wizards/space-station-14).
 All SS14 forks, such as ours, utilise the [Robust Toolbox engine](https://github.com/space-wizards/RobustToolbox) as a framework — however, it is not directly a part of our repository, but a separate module.
 
-If you want to host or create content for base SS14, go to the [Space Station 14 repository](https://github.com/space-wizards/space-station-14) as it contains both RobustToolbox and the content pack for development of new content packs and is the base for your fork.
+If you want to host or create content for base SS14, go to the [Space Station 14 repository](https://github.com/space-wizards/space-station-14) as all base code and resources for SS14 forks.
 
 ## Documentation/Wiki
 
@@ -38,7 +38,7 @@ The Goob Station [docs site](https://docs.goobstation.com/) has documentation on
 ## Contributing
 
 We are willing to accept contributions, however you are recommended to *not contribute to us*, unless you are confident in your ability to contribute, or are genuinely willing to learn!
-Instead, we ask that you contribute to the [core SS14 codebase](https://github.com/space-wizards/space-station-14).
+Instead, we ask that you contribute to the [core SS14 codebase](https://github.com/space-wizards/space-station-14), as you will be likely to find better assistance there.
 
 Although we are a fork of goob, you will be asked to fix your contributions if they are not sanely organised!
 We suggest you do this by putting new code in separate directories, for example:
