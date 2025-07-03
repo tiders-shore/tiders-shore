@@ -14,9 +14,9 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
 <!-- Guidelines: https://docs.spacestation14.io/en/getting-started/pr-guideline -->
-<!-- NOTE: All code submitted to this repository is ALWAYS licensed under the AGPL-3.0-or-later license. 
-The REUSE Specification headers or separate .license files indicate a secondary license (e.g., MPL or MIT) solely to facilitate 
-integration for projects that do not use the AGPL license. This secondary license does not replace the fact that AGPL-3.0-or-later remains the primary and binding license. 
+<!-- NOTE: All code submitted to this repository is ALWAYS licensed under the AGPL-3.0-or-later license.
+The REUSE Specification headers or separate .license files indicate a secondary license (e.g., MPL or MIT) solely to facilitate
+integration for projects that do not use the AGPL license. This secondary license does not replace the fact that AGPL-3.0-or-later remains the primary and binding license.
 Uncomment and modify the following line if you wish to change the license from the default of AGPL.-->
 <!--- LICENSE: AGPL -->
 ## About the PR
@@ -35,6 +35,7 @@ Small fixes/refactors are exempt. Media may be used in SS14 progress reports wit
 ## Requirements
 <!-- Confirm the following by placing an X in the brackets [X]: -->
 - [ ] I have read and am following the [Pull Request and Changelog Guidelines](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html).
+- [ ] I have organised new changes to be in their appropriate non-core directories, or otherwise added comments properly denoting them as non-core changes. <!-- TS14 change -->
 - [ ] I have added media to this PR or it does not require an ingame showcase.
 <!-- You should understand that not following the above may get your PR closed at maintainer’s discretion -->
 

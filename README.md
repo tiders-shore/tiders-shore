@@ -24,32 +24,46 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 <p align="center"> <img alt="Space Station 14" width="880" height="300" src="https://github.com/Goob-Station/Goob-Station/blob/master/Resources/Textures/Logo/logo.png" /></p>
 
-This is a fork from the primary repo for Space Station 14 called Goob Station. To prevent people forking RobustToolbox, a "content" pack is loaded by the client and server. This content pack contains everything needed to play the game on one specific server this is the content pack for Goob Station.
+Tider's Shore is a Space Station 14 server that prides itself on uhh... *something*.. We haven't figured out what it exactly is yet.
 
-If you want to host or create content for SS14, go to the [Space Station 14 repository](https://github.com/space-wizards/space-station-14) as it contains both RobustToolbox and the content pack for development of new content packs and is the base for your fork.
+We are a fork of [Goob Station](https://github.com/Goob-Station/Goob-Station), which itself is a fork of the [main Space Station 14 repository](https://github.com/space-wizards/space-station-14).
+All SS14 forks, such as ours, utilise the [Robust Toolbox engine](https://github.com/space-wizards/RobustToolbox) as a framework — however, it is not directly a part of our repository, but a separate module.
 
-## Links
-
-[Goob Station Discord Server](https://discord.gg/goobstation) | [Goob Station Development Discord Server](https://discord.gg/zXk2cyhzPN) | [Goob Station Forum](https://forums.goobstation.com/) | [Goob Station Website](https://goobstation.com)
+If you want to host or create content for base SS14, go to the [Space Station 14 repository](https://github.com/space-wizards/space-station-14) as it contains both RobustToolbox and the content pack for development of new content packs and is the base for your fork.
 
 ## Documentation/Wiki
 
-The Goob Station [docs site](https://docs.goobstation.com/) has documentation on GS14's content, engine, game design, and more. It also has lots of resources for new contributors to the project.
+The Goob Station [docs site](https://docs.goobstation.com/) has documentation on GS14's (and by extension, also TS14's) content, engine, game design, and more, including code standards.
 
 ## Contributing
 
-We are happy to accept contributions from anybody. Get in [Development Discord Server](https://discord.gg/zXk2cyhzPN) if you want to help. Feel free to check the [list of issues](https://github.com/Goob-Station/Goob-Station/issues) that need to be done and anybody can pick them up. Don't be afraid to ask for help either!
-While following the [Space Station 14 contribution guidelines](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html) is not mandatory for Goob Station, we recommend reviewing them for best practices.
+We are willing to accept contributions, however you are recommended to *not contribute to us*, unless you are confident in your ability to contribute, or are genuinely willing to learn!
+Instead, we ask that you contribute to the [core SS14 codebase](https://github.com/space-wizards/space-station-14).
 
-We are not currently accepting translations of the game on our main repository. If you would like to translate the game into another language consider creating a fork or contributing to a fork.
+Although we are a fork of goob, you will be asked to fix your contributions if they are not sanely organised!
+We suggest you do this by putting new code in separate directories, for example:
+- Although all core gas prototypes are stored in `Resources/Prototypes/Atmospherics/gases.yml`, TS14-exclusive ones would go to `Resources/Prototypes/_TidersShore/Atmospherics/gases.yml`.
+- Code for a new component being added to TS14, that would usually (in the core SS14 codebase) be added to `Content.Server/Atmos/Components`, would instead need go to `Content.Server/_TS14/Atmos/Components`.
+- Edits that must be done in core files should have accompanying comments denoting them as non-core changes, like this `Explosive` component as an example:
+<!-- zerowidth space to invalidate diff -->
+```diff
+​- type: entity
+  name: pen
+  id: Pen
+  components:
+  - type: Item
+- - type: Explosive
++ - type: Explosive # TS14 Change
+```
 
 ## Building
 
 1. Clone this repo.
-2. Run `RUN_THIS.py` to init submodules and download the engine.
+2a. Run `RUN_THIS.py` to init submodules and download the engine.
+2b. Alternatively, run `git submodule update --init --recursive` in the root of your cloned repository.
 3. Compile the solution.
 
-[More detailed instructions on building the project.](https://docs.goobstation.com/en/general-development/setup.html)
+See: [Goob codebase instructions for setting up the repository](https://docs.goobstation.com/en/general-development/setup.html)
 
 ## License
 
