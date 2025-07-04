@@ -19,8 +19,8 @@ jobs:
         fetch-depth: 0
 
     - run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git config user.name ${{ vars.CHANGELOG_USER }}
+        git config user.email ${{ vars.CHANGELOG_EMAIL }}
 
     - run: |
         git remote add upstream $MERGED_REPO
