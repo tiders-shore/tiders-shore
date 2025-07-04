@@ -14,6 +14,7 @@ env:
   MERGE_BRANCH: auto-upstream-merge
   MERGED_REPO: https://github.com/Goob-Station/Goob-Station.git
   GH_TOKEN: ${{ secrets.BOT_TOKEN }}
+  BASE_BRANCH: ${{ github.event.repository.default_branch || 'master' }}
 
 jobs:
   sync:
@@ -57,10 +58,10 @@ jobs:
         git push --force https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git $MERGE_BRANCH
 
     - id: findpr
-      uses: peter-evans/find-pull-request@v2
+      uses: juliangruber/find-pull-request-action@v1.9.0
       with:
-        head: $MERGE_BRANCH
-        base: master
+        branch: $MERGE_BRANCH
+        base: $BASE_BRANCH
         state: open
 
     - if: steps.findpr.outputs.pull_request_number != ''
@@ -73,7 +74,7 @@ jobs:
         token: $GH_TOKEN
         commit-message: 'Sync changes from upstream'
         branch: $MERGE_BRANCH
-        base: master
+        base: $BASE_BRANCH
         title: 'Merge changes from upstream repository'
         body: |
           This is an automated PR to merge from upstream.
