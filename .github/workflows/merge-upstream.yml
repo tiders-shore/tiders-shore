@@ -23,15 +23,33 @@ jobs:
       with:
         fetch-depth: 0
 
-    - run: |
+    - name: Setup
+      run: |
         git config user.name ${{ vars.CHANGELOG_USER }}
         git config user.email ${{ vars.CHANGELOG_EMAIL }}
-
-    - run: |
         git remote add upstream $MERGED_REPO
         git fetch upstream
 
-    - name: Merge
+    - name: Look for existing merge PRs
+      id: findpr
+      uses: peter-evans/find-pull-request@v2
+      with:
+        head: $MERGE_BRANCH
+        base: master
+        state: open
+
+    - name: Abort when finding existing PR
+      id: ensure
+      run: |
+        if [ steps.findpr.outputs.pull_request_number != '' ]; then
+          echo "Merge PR already exists: #${{ steps.findpr.outputs.pull_request_number }}!"
+          echo "already_exists=true" >> $GITHUB_OUTPUT
+        else
+          echo "already_exists=false" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Merge from upstream
+      if: steps.ensure.outputs.already_exists == 'false'
       id: merge
       run: |
         git checkout -b $MERGE_BRANCH
@@ -39,7 +57,7 @@ jobs:
         BASE_COMMIT=$(git rev-parse HEAD)
 
         if ! git merge upstream/master --no-edit; then
-          echo "Merge conflicts detected, committing conflicted merge"
+          echo "Merge conflicts found; commiting conflicted merge for manual resolution"
 
           git add -A
           git commit --no-verify -m "Merge upstream with conflicts"
@@ -53,22 +71,13 @@ jobs:
           exit 0
         fi
 
-    - run: |
+    - name: Create branch
+      if: steps.ensure.outputs.already_exists == 'false'
+      run: |
         git push --force https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git $MERGE_BRANCH
 
-    - id: findpr
-      uses: peter-evans/find-pull-request@v2
-      with:
-        head: $MERGE_BRANCH
-        base: master
-        state: open
-
-    - if: steps.findpr.outputs.pull_request_number != ''
-      run: |
-        echo "Merge PR already exists: #${{ steps.findpr.outputs.pull_request_number }}"
-
     - uses: peter-evans/create-pull-request@v5
-      if: steps.findpr.outputs.pull_request_number == ''
+      if: steps.ensure.outputs.already_exists == 'false'
       with:
         token: $GH_TOKEN
         commit-message: 'Sync changes from upstream'
@@ -79,7 +88,7 @@ jobs:
           This is an automated PR to merge from upstream.
         labels: Automated
 
-    - if: steps.merge.outputs.conflicted == 'true'
+    - if: steps.ensure.outputs.already_exists == 'false' && steps.merge.outputs.conflicted == 'true'
       uses: actions-ecosystem/action-add-labels@v1
       with:
         labels: "S: Merge Conflict"
