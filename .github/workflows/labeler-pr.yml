@@ -11,16 +11,11 @@ name: "Labels: PR"
 on:
 - pull_request_target
 
-permissions:
-  contents: read
-  pull-requests: write
-  issues: write
-
 jobs:
   labeler:
+    permissions:
+      contents: read
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
     - uses: actions/labeler@v5
-      with:
-        configuration: .github/labeler.yml
