@@ -11,10 +11,16 @@ name: "Labels: PR"
 on:
 - pull_request_target
 
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
 jobs:
   labeler:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
     - uses: actions/labeler@v5
-      env:
-        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      with:
+        configuration: .github/labeler.yml
