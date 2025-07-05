@@ -93,13 +93,3 @@
     componentsToPart:
     - type: MantisBladeArm
       actionProto: ActionToggleLeftMantisBlade
-
-- type: entity
-  parent: BaseAutosurgeonSyndicate
-  id: AutosurgeonSandevistan
-  name: syndicate autosurgeon (sandevistan)
-  components:
-  - type: AutoSurgeon
-    targetBodyPart: Chest
-    targetOrgan: Skibidi
-    newPartProto: OrganHeartSandevistan
