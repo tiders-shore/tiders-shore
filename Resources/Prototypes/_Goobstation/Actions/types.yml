@@ -106,15 +106,3 @@
     itemIconStyle: NoItem
     event: !type:ToggleMantisBladeEvent
 
-- type: entity
-  id: ActionToggleSandevistan
-  name: Toggle Sandevistan
-  description: Enable or disable your improved reflexes provided by the Sandevistan.
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: InstantAction
-    checkCanInteract: false
-    useDelay: 3
-    icon: { sprite: _Goobstation/Objects/Misc/sandevistan.rsi, state: icon }
-    itemIconStyle: NoItem
-    event: !type:ToggleSandevistanEvent
