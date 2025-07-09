@@ -1,6 +1,7 @@
-      
 # SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aidenkrz <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 LaCumbiaDelCoronavirus <90893484+LaCumbiaDelCoronavirus@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 github-actions[bot] <github-actions[bot]@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -50,7 +51,7 @@ jobs:
             echo "Error fetching PR files from GitHub API."
             exit 1
           fi
-          
+
           if ! echo "$PR_FILES_JSON" | jq -e . > /dev/null; then
              echo "Warning: Received empty or invalid JSON from GitHub API for PR files."
              PR_FILES="" # Set PR_FILES to empty to avoid errors below
@@ -107,10 +108,10 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: Automatically update REUSE headers"
-          commit_user_name: ${{ vars.CHANGELOG_USER }}
-          commit_user_email: ${{ vars.CHANGELOG_EMAIL }}
-          commit_author: ${{ vars.CHANGELOG_USER }} <${{ vars.CHANGELOG_EMAIL }}>
+          commit_user_name: ${{ vars.BOT_USER }}
+          commit_user_email: ${{ vars.BOT_EMAIL }}
+          commit_author: ${{ vars.BOT_USER }} <${{ vars.BOT_EMAIL }}>
           skip_dirty_check: false
           skip_fetch: true
 
-    
+
