@@ -40,13 +40,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'npm'
-          cache-dependency-path: Tools/changelog/package-lock.json
 
-      - name: Resolve and Generate Changelog
+      - name: Resolve Dependencies and Generate Changelog
         run: |
           cd Tools/changelog
-          npm ci --prefer-offline --no-audit --progress=false
+          npm install --prefer-offline --no-audit --progress=false
           node changelog.js
         shell: bash
 
