@@ -43,6 +43,7 @@ jobs:
 
       - name: Resolve Dependencies and Generate Changelog
         run: |
+          cd Tools/changelog
           npm install --prefer-offline --no-audit --progress=false
           node changelog.js
         shell: bash
