@@ -47,6 +47,7 @@ jobs:
           npm install --prefer-offline --no-audit --progress=false
           node changelog.js
         shell: bash
+        continue-on-error: true
 
       - name: Commit Changelog
         run: |
@@ -54,3 +55,4 @@ jobs:
           git diff --cached --quiet || git commit -m "${{ vars.CHANGELOG_MESSAGE }} (#${{ env.PR_NUMBER }})"
           git push
         shell: bash
+        continue-on-error: true
