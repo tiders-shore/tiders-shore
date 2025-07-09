@@ -1,0 +1,49 @@
+- type: decal
+  id: IdiNahuiSign1
+  tags: ["station"]
+  sprite:
+    sprite: _SpecZones/Decals/idinahuisign.rsi
+    state: idinahuisign1
+
+- type: decal
+  id: IdiNahuiSign2
+  tags: ["station"]
+  sprite:
+    sprite: _SpecZones/Decals/idinahuisign.rsi
+    state: idinahuisign2
+
+- type: decal
+  id: IdiNahuiSign3
+  tags: ["station"]
+  sprite:
+    sprite: _SpecZones/Decals/idinahuisign.rsi
+    state: idinahuisign3
+
+- type: decal
+  id: IdiNahuiSign4
+  tags: ["station"]
+  sprite:
+    sprite: _SpecZones/Decals/idinahuisign.rsi
+    state: idinahuisign4
+
+- type: decal
+  id: IdiNahuiSign5
+  tags: ["station"]
+  sprite:
+    sprite: _SpecZones/Decals/idinahuisign.rsi
+    state: idinahuisign5
+
+- type: decal
+  id: IdiNahuiSign6
+  tags: ["station"]
+  sprite:
+    sprite: _SpecZones/Decals/idinahuisign.rsi
+    state: idinahuisign6
+
+- type: decal
+  id: IdiNahuiSign7
+  tags: ["station"]
+  sprite:
+    sprite: _SpecZones/Decals/idinahuisign.rsi
+    state: idinahuisign7
+
