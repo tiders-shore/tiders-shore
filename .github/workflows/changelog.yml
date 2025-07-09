@@ -41,10 +41,9 @@ jobs:
         with:
           node-version: 18
 
-      - name: Resolve and Generate Changelog
+      - name: Resolve Dependencies and Generate Changelog
         run: |
-          cd Tools/changelog
-          npm ci --prefer-offline --no-audit --progress=false
+          npm install --prefer-offline --no-audit --progress=false
           node changelog.js
         shell: bash
 
